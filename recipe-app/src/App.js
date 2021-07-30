@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import Recipe from "./Recipe";
 import "./App.css";
 
 const App = () => {
   const APP_ID = "c69167e8";
-  const APP_KEY = "APPKEY";
+  const APP_KEY = "APP-KEY";
 
   const [recipes, setRecipes] = useState([]);
 
@@ -17,6 +18,7 @@ const App = () => {
     );
     const data = await response.json();
     setRecipes(data.hits);
+    console.log(data.hits);
   };
 
   return (
@@ -27,6 +29,9 @@ const App = () => {
           Search
         </button>
       </form>
+      {recipes.map((recipe) => (
+        <recipe />
+      ))}
     </div>
   );
 };
